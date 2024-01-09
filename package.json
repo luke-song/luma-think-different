@@ -1,5 +1,5 @@
 {
-  "name": "luma-think-different",
+  "name": "luma-challenge",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,8 +10,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-spring/three": "^9.7.3",
+    "@react-three/drei": "^9.93.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-intersection-observer": "^9.5.3",
+    "@react-three/fiber": "8.13.4",
+    "three": "^0.160.0",
+    "typeit-react": "^2.7.0",
+    "@react-three/postprocessing": "2.15.1",
+    "@react-three/rapier": "1.1.1",
+    "@types/three": "0.153.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
