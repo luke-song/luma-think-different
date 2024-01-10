@@ -1,124 +1,117 @@
 import "./App.css";
 import TypeIt from "typeit-react";
 import { useInView } from "react-intersection-observer";
-import React, { useRef, useState } from "react"; //useReducer, useMemo
-import { Canvas, useFrame } from "@react-three/fiber";
-import {
-  Fisheye,
-  CameraControls,
-  PerspectiveCamera,
-  Environment,
-  useGLTF,
-} from "@react-three/drei";
+import React, { useRef, useState } from "react";
+import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import Mac from "./components/Mac";
+import Windows from "./components/Windows";
+import HelloWorld from "./components/HelloWorld";
 
 export default function App() {
-  const { ref: sectionRef, inView: sectionInView } = useInView();
-  const { ref: section1Ref, inView: section1InView } = useInView();
+  const section1Ref = useRef();
   const { ref: section2Ref, inView: section2InView } = useInView();
   const { ref: section3Ref, inView: section3InView } = useInView();
   const { ref: section4Ref, inView: section4InView } = useInView();
   const { ref: section5Ref, inView: section5InView } = useInView();
   const { ref: section6Ref, inView: section6InView } = useInView();
 
+  const [isScrollDownButtonHovered, setScrollDownButtonHovered] =
+    useState(false);
+
+  const TypeItComponent = ({ text }) => (
+    <TypeIt options={{ speed: 50 }}>{text}</TypeIt>
+  );
+
+  const renderInView = (inView, Component) => inView && <Component />;
+
   return (
     <div className="container">
-      <section ref={sectionRef} className="">
+      <section className="intro-section">
         <div className="fade-in-out">
           Once upon a time, one college student dropped out.
         </div>
         <button
           className="scroll-down-button"
+          onMouseEnter={() => setScrollDownButtonHovered(true)}
+          onMouseLeave={() => setScrollDownButtonHovered(false)}
           onClick={() =>
-            section1Ref.current.scrollIntoView({ behavior: "smooth" })
+            section1Ref.current?.scrollIntoView({ behavior: "smooth" })
           }
-        />
+        >
+          <FontAwesomeIcon
+            icon={faArrowDown}
+            color={isScrollDownButtonHovered ? "black" : "white"}
+            size="3x"
+          />
+        </button>
       </section>
 
-      <section ref={section1Ref}>
-        <Canvas flat>
-          {/* <Fisheye zoom={0}> */}
-          {/* <CameraControls minPolarAngle={0} maxPolarAngle={Math.PI / 1.6} /> */}
-          <ambientLight intensity={Math.PI / 2} />
-          <directionalLight position={[0, 0, 5]} color="white" />
-          <pointLight position={[10, 10, 10]} />
-          <RotatingBox />
-          <Environment preset="city" background blur={1} />
-          <PerspectiveCamera makeDefault position={[0, 0, 18.5]} />
-          {/* </Fisheye> */}
-        </Canvas>
+      <section ref={section1Ref} id="3d-section">
+        Something
       </section>
 
       <section ref={section2Ref}>
         <p>
           {section2InView && (
-            <TypeIt options={{ speed: 50 }}>
-              Dropping in, he met calligraphy.
-            </TypeIt>
+            <div className="fade-in">
+              Dropping in, he discovered calligraphy.
+            </div>
           )}
         </p>
       </section>
 
       <section ref={section3Ref}>
-        <p>
-          {section3InView && (
-            <TypeIt options={{ speed: 50 }}>“Hello World!”</TypeIt>
-          )}
-        </p>
+        {renderInView(section3InView, HelloWorld)}
       </section>
-
       <section ref={section4Ref}>
-        <p>
-          {section4InView && (
-            <TypeIt options={{ speed: 50 }}>
-              The mac would have never had multiple typefaces or proportionally
-              spaced fonts.
-            </TypeIt>
-          )}
-        </p>
-      </section>
-
-      <section ref={section4Ref}>
-        <p>
-          {section4InView && (
-            <TypeIt options={{ speed: 50 }}>
-              And Since the Windows just copied the Mac, it's likely that no
-              personal computer would have them.
-            </TypeIt>
-          )}
-        </p>
+        <div className="fade-in">
+          <div>
+            {renderInView(section4InView, () => (
+              <TypeItComponent text="The mac would have never had multiple typefaces or proportionally spaced fonts." />
+            ))}
+          </div>
+          <div className="centered">
+            {renderInView(section4InView, () => (
+              <Mac glb="/mac.glb" />
+            ))}
+          </div>
+        </div>
       </section>
 
       <section ref={section5Ref}>
-        <p>
-          {section5InView && (
-            <TypeIt options={{ speed: 50 }}>
+        <div className="fade-in">
+          <div>
+            {renderInView(section5InView, () => (
+              <TypeItComponent text="And Since the Windows just copied the Mac, it's likely that no personal computer would have them." />
+            ))}
+          </div>
+          <div className="centered">
+            {renderInView(section5InView, () => (
+              <Windows glb="/windows.glb" />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="section6"
+        ref={section6Ref}
+        className="fade-in"
+        style={{ backgroundColor: "white", position: "relative" }}
+      >
+        <div>
+          {section6InView && (
+            <div className="fade-in" style={{ color: "black" }}>
               You can’t connect the dots looking forward; you can only connect
               them looking backwards. So you have to trust that the dots will
               somehow connect in your future. You have to trust in something —
               your gut, destiny, life, karma, whatever.
-            </TypeIt>
+            </div>
           )}
-        </p>
-      </section>
-
-      <section ref={section6Ref}>
-        {section6InView && <p>Sorry. Will be Ready Soon</p>}
+        </div>
       </section>
     </div>
-  );
-}
-
-function RotatingBox() {
-  const [active, setActive] = useState(false);
-
-  // const { nodes, materials } = useGLTF("/model.glb");
-
-  const ref = useRef();
-  useFrame(() => (ref.current.rotation.x = ref.current.rotation.y += 0.01));
-  return (
-    <mesh ref={ref} onClick={() => setActive(!active)} scale={active ? 1.5 : 1}>
-      <boxGeometry args={[2, 2, 2]} />
-      <meshNormalMaterial color="white" />
-    </mesh>
   );
 }

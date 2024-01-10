@@ -1,15 +1,13 @@
 section {
   display: grid;
-  place-items: center;
+  justify-content: center;
   align-items: center;
+  place-items: center;
   height: 100vh;
   background-color: var(--Black);
   color: var(--White);
   font-size: 3rem;
   padding: 40px;
-}
-
-p {
   text-align: center;
 }
 
@@ -17,21 +15,55 @@ p {
   animation: fadeIn 3s;
 }
 
-.fade-out {
-  animation: fadeOut 3s;
-}
-
 .fade-in-out {
   animation: fadeInOut 5s infinite;
 }
 
+.intro-section,
+#section6 {
+  position: relative;
+}
+
+#section6 {
+  background-image: url("./assets/steve-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: white;
+  height: 100vh;
+  padding: 60px;
+  color: black;
+}
+
+.centered,
+.scroll-down-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .scroll-down-button {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 24px;
-  height: 24px;
-  border-radius: 24px;
+  bottom: 100px;
+  width: 72px;
+  height: 72px;
+  border-radius: 4px;
+  background-color: transparent;
+  border: 1px solid var(--White);
+  cursor: pointer;
+}
+
+.scroll-down-button:hover {
+  background-color: white;
+}
+
+.scroll-down-button #arrow-down {
+  position: absolute;
+  bottom: 400px;
+  width: 72px;
+  height: 72px;
+  border-radius: 4px;
+  background-color: transparent;
+  border: 1px solid var(--White);
 }
 
 @keyframes fadeInOut {
@@ -51,15 +83,5 @@ p {
 
   to {
     opacity: 1;
-  }
-}
-
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-
-  to {
-    opacity: 0;
   }
 }
