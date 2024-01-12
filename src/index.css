@@ -1,16 +1,16 @@
-@import url("https://fonts.googleapis.com/css2?family=Alegreya&display=swap");
+@import url("https://rsms.me/inter/inter.css");
 
 :root {
   --Black: #131316;
   --White: #ffffff;
 }
 
-html {
-  font-family: "Alegreya", serif;
-}
-
 * {
   box-sizing: border-box;
+}
+
+html {
+  font-family: "Inter var", sans-serif;
 }
 
 html,
@@ -20,4 +20,31 @@ body,
   height: 100%;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: "Inter var", sans-serif;
+  font-feature-settings: "cv06" 1;
+  overscroll-behavior: none;
+}
+
+.header {
+  position: absolute;
+  top: 40px;
+  font-size: 40px;
+}
+
+.header-left {
+  left: 90px;
+}
+
+.header-right {
+  right: 40px;
+}
+
+@media (max-width: 768px) {
+  .header {
+    font-size: 10px;
+  }
 }

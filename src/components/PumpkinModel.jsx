@@ -1,8 +1,8 @@
 import React, { useRef, useState } from "react";
-import { useFrame } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
 
-export default function MacModel({ glb, ...props }) {
+export default function PumpkinModel({ glb, ...props }) {
   const [isHovered, setIsHovered] = useState(true);
   const groupRef = useRef();
   const meshRef = useRef();
@@ -25,14 +25,10 @@ export default function MacModel({ glb, ...props }) {
     >
       <mesh
         ref={meshRef}
-        geometry={nodes.Mac_Tri_Baked_MacTriBaked_0.geometry}
-        material={materials["Mac.Tri.Baked"]}
-        position={[-0.222, 0, 0]}
-        scale={active ? 0.0011 : 0.001}
-        onClick={() => setActive(!active)}
+        geometry={nodes.Object_4.geometry}
+        material={materials.material_0}
       />
     </group>
   );
 }
-
-useGLTF.preload("/mac.glb");
+useGLTF.preload("/pumpkin.glb");
