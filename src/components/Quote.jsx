@@ -3,7 +3,7 @@ import { useMediaQuery } from "react-responsive";
 import React, { useRef, useEffect } from "react";
 import { TweenMax, Power4 } from "gsap";
 
-export default function HelloWorld() {
+export default function Quote() {
   const canvasRef = useRef(null);
   const isMobile = useMediaQuery({ query: "(max-width: 405px)" });
 
@@ -37,7 +37,7 @@ export default function HelloWorld() {
         new LeonSans({
           text: line,
           color: ["#000000"],
-          size: isMobile ? 25 : 100,
+          size: isMobile ? 20 : 80,
           weight: 400,
         })
     );

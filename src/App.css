@@ -43,6 +43,15 @@ section {
   width: 100vw;
 }
 
+#section3 {
+  padding: 60px;
+  padding: 0;
+  background-image: url("/life-heart.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: black;
+}
+
 #section4 {
   background-image: url("./assets/steve-bg.png");
   background-repeat: no-repeat;
@@ -53,14 +62,6 @@ section {
   color: white;
 }
 
-#section3 {
-  padding: 60px;
-  padding: 0;
-  background-image: url("/life-heart.jpeg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  color: black;
-}
 .padding {
   padding: 80px;
 }
@@ -149,6 +150,9 @@ section {
     transform: scale(0.8);
     position: relative;
     left: 70px;
+  }
+  .intro-section {
+    font-size: 4rem;
   }
 
   .three-section {

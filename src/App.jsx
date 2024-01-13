@@ -6,7 +6,7 @@ import { useMediaQuery } from "react-responsive";
 
 import Pumpkin from "./components/Pumpkin";
 import Nostalgia from "./components/nostalgia";
-import HelloWorld from "./components/HelloWorld";
+import Quote from "./components/Quote";
 
 export default function App() {
   const section1Ref = useRef();
@@ -19,7 +19,7 @@ export default function App() {
       options={{ speed: 50 }}
       style={{
         fontSize: isMobile ? "14px" : "inherit",
-        lineHeight: isMobile ? "1.2" : "normal", // Adjust the line heights as needed
+        lineHeight: isMobile ? "1.0" : "normal", // Adjust the line heights as needed
       }}
     >
       {text}
@@ -64,19 +64,19 @@ export default function App() {
       </section>
 
       <section ref={section3Ref} id="section3">
-        {renderInView(section3InView, HelloWorld)}
+        {renderInView(section3InView, Quote)}
       </section>
 
       <section
         id="section4"
         ref={section4Ref}
         className="fade-in"
-        style={{ backgroundColor: "white", position: "relative" }}
+        style={{ backgroundColor: "var(--Black)", position: "relative" }}
       ></section>
       <section>
         {section4InView && (
           <>
-            <div style={{ padding: "80px", marginBottom: "50px" }}>
+            <div>
               <TypeItComponent
                 text="You can't connect the dots looking forward; you can only connect
             them looking backwards. So you have to trust that the dots will
