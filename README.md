@@ -9,7 +9,7 @@
 </p>
 
 Technical Showcase:
-'@react-three/fiber' and '@react-spring/three'
+'@react-three/fiber'
 
 ## :runner: Installation
 
