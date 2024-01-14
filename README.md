@@ -8,8 +8,6 @@
    <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
 </p>
 
-##Story
-
 ### 🌌 Think Different 
 
 **Story:** Follow the polka dots through the world of Yayoi Kusama's dot obsession art, encompassing her iconic pumpkins, mesmerizing flowers, and more, each piece a vibrant testament to her unique, hypnotic style.
