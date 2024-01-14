@@ -25,11 +25,21 @@ section {
   animation: fadeIn 3s;
 }
 
-.fade-in-out {
-  animation: fadeInOut 5s infinite;
+.fade-in-first {
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+.fade-in-second {
+  animation: fadeIn 1s ease-in-out 1s forwards;
+  opacity: 0;
 }
 
 .intro-section {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   background-color: white;
   color: black;
   font-size: 4rem;
@@ -65,45 +75,35 @@ section {
 .padding {
   padding: 80px;
 }
-.centered,
-.scroll-down-button {
+
+.bouncing-circle {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.scroll-down-button {
+  width: 50px;
+  height: 50px;
+  border: 2px solid grey;
+  border-radius: 50%;
   position: absolute;
-  bottom: 100px;
-  width: 72px;
-  height: 72px;
-  border-radius: 50px;
-  background-color: var(--Black);
-  border: 1px solid var(--White);
-  cursor: pointer;
+  bottom: 50px;
+  transform: translateX(-50%);
 }
 
-.scroll-down-button:hover {
-  background-color: white;
+.inner-circle {
+  width: 15px;
+  height: 15px;
+  background-color: black;
+  border-radius: 50%;
+  animation: bounce 1s infinite;
 }
 
-.scroll-down-button #arrow-down {
-  position: absolute;
-  bottom: 400px;
-  width: 72px;
-  height: 72px;
-  border-radius: 4px;
-  background-color: transparent;
-  border: 1px solid var(--White);
-}
-
-@keyframes fadeInOut {
+@keyframes bounce {
   0%,
   100% {
-    opacity: 0;
+    transform: translateY(0);
   }
   50% {
-    opacity: 1;
+    transform: translateY(-15px);
   }
 }
 
@@ -177,5 +177,9 @@ section {
     background-repeat: no-repeat;
     background-size: cover;
     color: black;
+  }
+
+  .bouncing-circle {
+    left: 200px;
   }
 }

@@ -8,21 +8,13 @@ export default function PumpkinModel({ glb, ...props }) {
   const meshRef = useRef();
 
   useFrame(() => {
-    if (isHovered) {
-      groupRef.current.rotation.y += 0.01;
-    }
+    groupRef.current.rotation.y += 0.01;
   });
 
   const { nodes, materials } = useGLTF(glb);
 
   return (
-    <group
-      ref={groupRef}
-      {...props}
-      dispose={null}
-      onPointerOver={() => setIsHovered(false)}
-      onPointerOut={() => setIsHovered(true)}
-    >
+    <group ref={groupRef} {...props} dispose={null}>
       <mesh
         ref={meshRef}
         geometry={nodes.Object_4.geometry}

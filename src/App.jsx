@@ -7,32 +7,27 @@ import { useMediaQuery } from "react-responsive";
 import Pumpkin from "./components/Pumpkin";
 import Nostalgia from "./components/nostalgia";
 import Quote from "./components/Quote";
+import TypeItComponent from "./components/typingAnimation";
 
 export default function App() {
   const section1Ref = useRef();
-  const { ref: section2Ref, inView: section2InView } = useInView();
-  const { ref: section3Ref, inView: section3InView } = useInView();
+  const { ref: section2Ref, inView: section2InView } = useInView({
+    threshold: 0.5,
+  });
+  const { ref: section3Ref, inView: section3InView } = useInView({
+    threshold: 0.5,
+  });
   const { ref: section4Ref, inView: section4InView } = useInView();
-  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
-  const TypeItComponent = ({ text }) => (
-    <TypeIt
-      options={{ speed: 50 }}
-      style={{
-        fontSize: isMobile ? "14px" : "inherit",
-        lineHeight: isMobile ? "1.0" : "normal", // Adjust the line heights as needed
-      }}
-    >
-      {text}
-    </TypeIt>
-  );
 
   const renderInView = (inView, Component) => inView && <Component />;
 
   return (
     <div className="container">
       <section ref={section1Ref} className="intro-section">
-        <div className="fade-in-out">
-          You can’t connect the dots looking forward
+        <div className="fade-in-first">You can’t connect</div>
+        <div className="fade-in-second">the dots looking forward</div>
+        <div className="bouncing-circle">
+          <div className="inner-circle"></div>
         </div>
       </section>
 

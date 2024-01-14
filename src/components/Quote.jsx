@@ -22,22 +22,33 @@ export default function Quote() {
     ctx.scale(pixelRatio, pixelRatio);
 
     const lines = [
-      "Embrace now, trust in connectivity.",
-      "Embrace now, trust in connectivity.",
-      "Embrace now, trust in connectivity.",
-      "Embrace now, trust in connectivity.",
-      "Embrace now, trust in connectivity.",
-      "Embrace now, trust in connectivity.",
-      "Embrace now, trust in connectivity.",
-      "Embrace now, trust in connectivity.",
+      "Just embrace now, trust in connectivity.",
+      "Just embrace now, trust in connectivity.",
+      "Just embrace now, trust in connectivity.",
+      "Just embrace now, trust in connectivity.",
+      "Just embrace now, trust in connectivity.",
+      "Just embrace now, trust in connectivity.",
+      "Just embrace now, trust in connectivity.",
+      "Just embrace now, trust in connectivity.",
     ];
+
+    const colors = [
+      "#000000",
+      "#FF0000",
+      "#00FF00",
+      "#0000FF",
+      "#FFFF00",
+      "#00FFFF",
+      "#FF00FF",
+      "#FFFFFF",
+    ]; // Add more colors as needed
 
     const leons = lines.map(
       (line, index) =>
         new LeonSans({
           text: line,
-          color: ["#000000"],
-          size: isMobile ? 20 : 80,
+          color: [colors[index % colors.length]], // Use the index to select a color
+          size: isMobile ? 20 : 70,
           weight: 400,
         })
     );
@@ -62,12 +73,12 @@ export default function Quote() {
       for (i = 0; i < total; i++) {
         TweenMax.fromTo(
           leon.drawing[i],
-          0.8,
+          1.5,
           {
             value: 0,
           },
           {
-            delay: i * 0.5,
+            delay: 0,
             value: 1,
             ease: Power4.easeOut,
           }
