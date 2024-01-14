@@ -10,7 +10,7 @@ export default function Mac({ glb, geometry, material }) {
       <directionalLight position={[0, 0, 5]} color="white" />
       <pointLight position={[10, 10, 10]} />
       <Model glb={glb} geometry={geometry} material={material} />
-      <PerspectiveCamera makeDefault position={[0, 0, 2]} />
+      <PerspectiveCamera makeDefault position={[0.25, 0, 2]} />
     </Canvas>
   );
 }

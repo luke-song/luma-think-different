@@ -16,12 +16,12 @@ function Overlay() {
         height: "100%",
       }}
     >
-      <p class="header header-left">
+      <p className="header header-left">
         Luke Song
         <br />
         challenge story - connecting dots
       </p>
-      <div class="header header-right">1/11/2024</div>
+      <div className="header header-right">1/11/2024</div>
     </div>
   );
 }

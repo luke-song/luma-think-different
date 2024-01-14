@@ -3,25 +3,14 @@ import { useFrame } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
 
 export default function WindowsModel({ glb, ...props }) {
-  const [active, setActive] = useState(false);
-  const [isHovered, setIsHovered] = useState(true);
   const groupRef = useRef();
   const meshRef = useRef();
   useFrame(() => {
-    if (isHovered) {
-      groupRef.current.rotation.y += 0.01;
-    }
+    groupRef.current.rotation.y += 0.01;
   });
   const { nodes, materials } = useGLTF(glb);
   return (
-    <group
-      ref={groupRef}
-      {...props}
-      dispose={null}
-      onPointerOver={() => setIsHovered(false)}
-      onPointerOut={() => setIsHovered(true)}
-      onClick={() => setActive(!active)}
-    >
+    <group ref={groupRef} {...props} dispose={null}>
       <mesh
         ref={meshRef}
         geometry={nodes.defaultMaterial.geometry}

@@ -5,6 +5,8 @@ import React, { useRef, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 
 import Pumpkin from "./components/Pumpkin";
+import Mac from "./components/Mac";
+import Windows from "./components/Windows";
 import Nostalgia from "./components/nostalgia";
 import Quote from "./components/Quote";
 import TypeItComponent from "./components/typingAnimation";
@@ -67,7 +69,11 @@ export default function App() {
         ref={section4Ref}
         className="fade-in"
         style={{ backgroundColor: "var(--Black)", position: "relative" }}
-      ></section>
+      >
+        <Mac glb="/mac.glb" />
+
+        <Windows glb="/windows.glb" />
+      </section>
       <section>
         {section4InView && (
           <>
